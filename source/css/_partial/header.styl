@@ -1,0 +1,185 @@
+#header
+  margin: 0 auto 3rem
+  width: 100%
+  background-image: url(/images/background6.svg) 0 0 no-repeat
+
+  h1, .h1
+    margin-top: 0
+    margin-bottom: 0
+    color: #000
+    letter-spacing: .01em
+    font-weight: 500
+    font-style: normal
+    font-size: 1.5rem
+    line-height: 2rem
+    font-family: $font-family-title
+    letter-spacing: -2px;
+    antialias()
+
+  a
+    background: none
+    color: inherit
+    text-decoration: none
+    box-shadow: none
+
+  #logo
+    display: inline-block
+    float: left
+    margin-right: 20px
+    width: $logo-width
+    height: $logo-height
+    border-radius: 5px
+    filter: grayscale(100%)
+    background-size: $logo-width $logo-height
+    background-repeat: no-repeat
+    -webkit-filter: grayscale(100%)
+
+  #nav
+    color: $color-accent-1
+    letter-spacing: .01em
+    font-weight: normal
+    font-style: normal
+    font-size: .8rem
+
+    .site-nav-toggle
+      display: none
+
+    .site-nav
+      display: block
+      margin-top: .1rem;
+      font-size: 0;
+      letter-spacing: -4px;
+
+      ul
+        margin: 0
+        padding: 0
+        list-style-type: none
+        line-height: 15px
+
+        li
+          display inline-block
+          margin-right: 1.125rem
+          border-right: 1px dotted $color-accent-1
+          vertical-align: middle
+          font-size: 0.8rem;
+          letter-spacing: normal;
+          word-spacing: normal;
+
+        li:last-child
+          margin-right: 0
+          border-right: 0
+
+          a
+            margin-right: 0
+      
+      a
+        margin-right: 1.125rem
+        color: color-accent-1
+
+      a:hover
+        underline(5px, $color-accent-1)
+        box-shadow: none
+
+      a
+        text-decoration: none
+        background: none
+        position: relative;
+        box-shadow: none
+        &:hover
+          background: none
+        &:before
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          bottom: -3.5px
+          left: 0;
+          background-color: #000;
+          /* visibility: hidden; */
+          -webkit-transform: scaleX(0);
+          -moz-transform: scaleX(0);
+          -ms-transform: scaleX(0);
+          -o-transform: scaleX(0);
+          transform: scaleX(0);
+          transition-duration: 0.08s;
+          transition-timing-function: ease-in-out;
+          transition-delay: 0
+        //underline(6px, $color-text)
+        &:hover:before
+          //background-image: linear-gradient(transparent, transparent 5px, $color-link 5px, $color-link)
+          visibility: visible;
+          -webkit-transform: scaleX(1.02);
+          -moz-transform: scaleX(1.02);
+          -ms-transform: scaleX(1.02);
+          -o-transform: scaleX(1.02);
+          transform: scaleX(1.02);
+          height: 2px;
+          background-color: $color-accent-1
+
+        &.selected:before
+          //background-image: linear-gradient(transparent, transparent 5px, $color-link 5px, $color-link)
+          visibility: visible;
+          -webkit-transform: scaleX(1.02);
+          -moz-transform: scaleX(1.02);
+          -ms-transform: scaleX(1.02);
+          -o-transform: scaleX(1.02);
+          transform: scaleX(1.02);
+          height: 2px;
+          background-color: $color-accent-1
+          transition-duration: 0.1s;
+          
+
+      
+
+#header:hover
+  #logo
+    filter: none
+    -webkit-filter: none
+
+@media screen and (max-width: 480px)
+  #header
+    margin-bottom 2rem
+    h1
+      font-weight: 700
+  #header #logo
+    margin-right  10px
+  #header #title
+    //display: table
+    margin-right: 2rem
+    min-height: $logo-height
+    vertical-align: middle;
+    /* text-align: center; */
+    position: relative;
+    top: 10px;
+    h1
+      display: table-cell
+      vertical-align: middle
+
+  #header #nav
+    ul
+      a:hover
+        background: none
+    
+    .site-nav-toggle
+      position: absolute
+      top: 55px
+      right: 1rem
+      display: block
+
+    .site-nav
+      display: none
+      ul
+        li
+          padding-top: .25rem
+          padding-left: $logo-width + 20px
+          font-size: 1rem
+          display block
+          border-right: none
+
+    .site-nav.responsive
+      display: block
+      
+
+#title
+  text-shadow:  2px 3px 0 rgba(228, 228, 228, 0.768627)
+  display inline-block

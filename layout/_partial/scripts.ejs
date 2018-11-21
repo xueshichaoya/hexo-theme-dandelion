@@ -1,0 +1,138 @@
+<!-- jquery -->
+<%- js('lib/jquery/jquery.min') %>
+<%- js('lib/justified-gallery/js/jquery.justifiedGallery.min.js') %>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<% if (is_post()) { %>
+  <%- js('lib/jquery/jquery.scroll.floor') %>
+<% } %>
+
+<% if (is_home()) { %>
+  <%- js('lib/t.js/t.min.js') %>
+<% } %>
+
+<% if ( page.comments){ %>
+  <script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <%- js('lib/valine/Valine.min.js') %>
+<% } %>
+
+<%- js('js/main') %>
+<!-- search -->
+<% if (config.search || page.search){ %>
+  <% if(- is_home()){ %>
+    <%- js('js/search.js') %>
+  <% } %>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input");
+    var $resultArea = $("#search-result");
+    inputArea.onfocus = function() {
+      var search_path = "<%= config.search.path %>";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "<%= config.root %>" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    }
+    inputArea.onkeydown = function(){
+        if(event.keyCode==13){
+            return false
+        }
+    }
+    $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+        if (!$(e.target).text()) {
+            $(".search-no-result").show(200);
+        } else {
+            $(".search-no-result").hide();
+        }
+    })
+  </script>
+<% } %>
+<!-- Google Analytics 
+<% if (theme.google_analytics.enabled && theme.google_analytics.id){ %>
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '<%= theme.google_analytics.id %>', 'auto');
+        ga('send', 'pageview');
+    </script>
+<% } %>-->
+<!-- Baidu Analytics -->
+<% if (theme.baidu_analytics.enabled && theme.baidu_analytics.id){ %>
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?<%= theme.baidu_analytics.id %>";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<% } %>
+
+<!-- Baidu push -->
+<% if (theme.baidu_push.enabled){ %>
+    <script>
+        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+<% } %>
+
+<!-- 360 push -->
+<% if (theme.qihu_push.enabled){ %>
+    <script>
+        (function(){
+            var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?  d6464311a6aae841044e53e6bbb94cda":"https://jspassport.ssl.qhimg.com/11.0.1.js?d6464311a6aae841044e53e6bbb94cda";
+            document.write('<script src="' + src + '" id="sozz"><\/script>');
+            })();
+    </script>
+<% } %> 
+
+
+<!-- valine Comments  -->
+<% if (theme.valine.enable && page.comments){ %>
+    <script type="text/javascript">
+        var GUEST = ['nick','mail','link'];
+        var guest = 'nick,mail';
+        guest = guest.split(',').filter(function (item) {
+          return GUEST.indexOf(item)>-1;
+        });
+        new Valine({
+            av: AV,
+            el: '#valine-comments',
+            app_id: '<%= theme.valine.appid %>',
+            app_key: '<%= theme.valine.appkey %>',
+            placeholder: '<%= theme.valine.placeholder %>',
+            avatar: '<%= theme.valine.avatar %>',
+            guest_info:guest,
+            pageSize: '<%= theme.valine.pageSize %>' || 10,
+        });
+
+        //remove info
+        var infoEle = document.querySelector('#valine-comments .info');
+        if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+          infoEle.childNodes.forEach(function(item) {
+            item.parentNode.removeChild(item);
+          });
+        };
+
+        //move emoji-preview-button
+        if ($("#valine-comments .vwrap").length > 0) {
+            $("#valine-comments .vwrap .vcontrol .col.col-80").prepend($("#valine-comments .vwrap .vedit .vctrl").detach());
+        };
+
+    </script>
+<% } %>
+
+

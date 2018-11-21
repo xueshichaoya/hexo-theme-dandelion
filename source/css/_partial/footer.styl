@@ -1,0 +1,152 @@
+#footer
+  margin-bottom: 10px
+  color: $color-meta
+  vertical-align: top
+  text-align: center
+  font-size: 11px
+
+  ul
+    margin: 0
+    padding: 0
+    list-style: none
+
+  li
+    display: inline-block
+    margin-right: 0
+    border-right: 1px solid $color-border
+    vertical-align: middle
+    font-size: 11px
+    letter-spacing: normal
+    word-spacing: normal
+    display: inline-block
+    zoom: 1
+
+    a
+      margin-right: 0
+
+  li:last-child
+    margin-right: 0
+    border-right: 0
+
+    a
+      margin-right: 0
+
+  a
+    color: $color-meta
+
+  a:hover
+    color: lighten($color-meta, 20%)
+
+  .footer-left
+    //height: 20px
+    vertical-align: middle
+    line-height: 1rem;
+    font-family: $font-family-footer
+  .footer-right
+    margin: 0.5rem 0
+    nav
+      font-size: 0
+      letter-spacing: -4px
+      /* word-spacing: -4px; */
+    li
+      padding: 0 12px
+      line-height: 1rem;
+
+    nav.footer-site-nav
+      a
+        text-decoration: none
+        background: none
+        position: relative;
+
+        &:hover
+          background: none
+
+        &:before
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          bottom: 0px
+          left: 0;
+          background-color: #000;
+          /* visibility: hidden; */
+          -webkit-transform: scaleX(0);
+          -moz-transform: scaleX(0);
+          -ms-transform: scaleX(0);
+          -o-transform: scaleX(0);
+          transform: scaleX(0);
+          transition-duration: 0.1s;
+          transition-timing-function: ease-in-out;
+          transition-delay: 0
+
+        //underline(6px, $color-text)
+
+        &:hover:before
+          //background-image: linear-gradient(transparent, transparent 5px, $color-link 5px, $color-link)
+          visibility: visible;
+          -webkit-transform: scaleX(0.95);
+          -moz-transform: scaleX(0.95);
+          -ms-transform: scaleX(0.95);
+          -o-transform: scaleX(0.95);
+          transform: scaleX(0.95);
+          height: 1px;
+          background-color: #858585
+
+a.footer-copyright-auth
+  text-decoration: NONE;
+  position: relative;
+
+  &:before
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0px;
+    left: 0;
+    background-color: #000;
+    /* visibility: hidden; */
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    transform: scaleX(0);
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+
+  &:hover:before
+    visibility: visible;
+    -webkit-transform: scaleX(0.95);
+    -moz-transform: scaleX(0.95);
+    -ms-transform: scaleX(0.95);
+    -o-transform: scaleX(0.95);
+    transform: scaleX(0.95);
+    height: 1px;
+    background-color: #858585;
+
+
+@media (min-width: 300px)
+  #footer
+    .footer-right
+        //align-self: flex-end
+        li
+          padding: 0 15px 
+
+@media (min-width: 39rem)
+  #footer
+    //display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+    align-items: center
+    align-content: center
+    margin: 0.5rem
+    text-align: center
+
+    .footer-left
+      align-self: flex-start
+      //margin-right: 20px
+
+    .footer-right
+      //align-self: flex-end
+      li
+        padding: 0 20px 

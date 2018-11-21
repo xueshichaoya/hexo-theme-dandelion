@@ -1,0 +1,23 @@
+<section id="search">
+  <form>
+    <div class="search-box"  id="search-box">
+      <input type="text" class="search-input" id="search-input" placeholder="<%= __('search.search') %>">
+      <svg class="nav-icon" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+				<g class="stroke">
+					<circle cx="13" cy="13" r="9"  class="highlight stroke part1"></circle>
+					<path d="M22.5,22.5 L26,26" class="highlight stroke part2"></path>
+					<path d="M9 13.6C9.5 14.9 10.6 16.5 12.2 17" class="highlight stroke part3"></path>
+				</g>
+			</svg>
+    </div>
+  </form>
+  <% if (is_home()) { %>
+    <% if (theme.tags_overview && site.tags.length) { %>
+      <span class="widget tagcloud">
+        <%- tagcloud({min_font:10,max_font:16,amount:10,color:1,start_color:'#297866',end_color:'#183D4E'}) %>
+      </span>
+    <% } %>
+  <% } %>
+  <div id="search-result"></div>
+  <p class="search-no-result"><%= __('search.no_results') %></p>
+</section>

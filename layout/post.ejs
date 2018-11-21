@@ -1,0 +1,83 @@
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle' }) %>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <i class="icon czs-user-l"></i>
+        <span itemprop="name">
+          <% if (page.author) { %>
+          <%- page.author %>
+          <% } else { %>
+          <%- config.author %>
+          <% } %></span>
+      </span>
+      <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
+      <%- partial('_partial/post/tag' , { post: page, class_name: 'posttag' }) %>
+      <span>
+        <i class="icon czs-eye-l"></i>
+        <span id="busuanzi_value_page_pv"></span><span>℃</span>
+      </span>
+    </div>
+  </header>
+  <%- partial('_partial/post/gallery') %>
+  <div class="content" itemprop="articleBody">
+    <%- page.more %>
+  </div>
+  <div>
+    <div class="post-announce">感谢您的阅读，本文由 <a href="<%= config.url %>">
+        <%= config.title %></a> 版权所有。如若转载，请注明出处：
+      <%= config.title %>（<a href="<%= config.url %>">
+        <%= config.url %></a>）
+    </div>
+    <div class="post-prev-next">
+      <% if (page.prev) { %>
+        <div class="post-prev">
+          <a title="<%- page.prev.title %>" href="<%- url_for(page.prev.path) %>">
+            <i class="fas fa-chevron-left"></i><%- page.prev.title %>
+          </a>
+        </div>
+      <% } %>
+      
+      <% if (page.next) { %>
+        <div class="post-next">
+          <a title="<%- page.next.title %>" href="<%- url_for(page.next.path) %>">
+            <%- page.next.title %><i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <div>
+    
+
+
+
+<div id="archive">
+    <% var year = 0 %>
+    <% var itemFirst = true %>
+    <% var change = false %>
+    <% var cnt = 0 %>
+    <% var page_tags = list_tags(page.tags,{ show_count: false}) %>
+    <% var page_title = page.title %>
+    <ul>
+    <% site.posts.sort('date', 'desc').each(function(post) { %>
+      <% var post_tags = list_tags(post.tags,{ show_count: false}) %>
+      <% var post_title = post.title %>
+      <% if ((page_tags === post_tags)&&(post_title !==page_title)&&(cnt<5)) { %>
+        <li><%- post.title%></li>
+        <% cnt = cnt+1 %>
+      <% } %>
+      
+    <% }); %>
+    </ul>
+</div>
+
+
+
+
+
+  </div>
+</article>
+
+<%- partial('_partial/comments') %>
+

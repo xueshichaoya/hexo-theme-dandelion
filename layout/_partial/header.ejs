@@ -1,0 +1,41 @@
+<header id="header">
+  <a href="<%- url_for("/") %>">
+  <% if (theme.logo && theme.logo.enabled) { %>
+    <% if (theme.gravatar.email && theme.logo.gravatar) { %>
+      <div id="logo" style="background-image: url(<%- gravatar(theme.gravatar.email) %>);"></div>
+    <% } else { %>
+      <div id="logo" style="background-image: url(<%- url_for(theme.logo.url) %>);"></div>
+    <% } %>
+  <% } %>
+    
+  </a>
+
+  <div id="title">
+      <a  href="<%- url_for("/") %>"><h1><%= config.title %></h1></a>
+    </div>
+  <div id="nav">
+   
+      <div class="site-nav-toggle icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </div>
+
+      <nav class="site-nav">
+        <ul>
+          <% for (var i in theme.nav) { %> 
+            <li><a href="<%- url_for(theme.nav[i]) %>" title=""><%= __('nav.'+i).replace("nav.", "") %></a></li>
+          <% } %>
+        </ul>
+      </nav>
+      <script type="text/javascript">
+        var myNav = document.getElementById("nav").getElementsByClassName("site-nav")[0].getElementsByTagName("a");
+        for(var i=myNav.length-1;i>=0;i--){
+            var links = myNav[i].getAttribute("href");
+            var myURL = document.location.href;
+            if(myURL.indexOf(links) != -1){
+                myNav[i].className="selected";
+                break;
+            }
+        }
+     </script>
+  </div>
+</header>

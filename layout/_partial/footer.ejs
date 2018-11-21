@@ -1,0 +1,19 @@
+<footer id="footer">
+  <div class="footer-left">
+    <div class="footer-copyright">
+      <%= __('footer.copyright') %> &copy; <%= new Date().getFullYear() %> <a class="footer-copyright-auth" href="/"><%= config.author || config.title %></a>
+    </div>
+    <div class="footer-icp">
+      <%= config.icp %>
+    </div>
+  </div>
+  <div class="footer-right">
+    <nav class="footer-site-nav">
+      <ul>
+        <% for (var i in theme.nav) { %> 
+          <li><a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</footer>

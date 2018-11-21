@@ -1,0 +1,238 @@
+.blog-post-comments
+  margin-top 4rem
+
+  h2:before
+    position: absolute
+    top: -4px
+    left: -1rem
+    color: $color-accent-1
+    content: "#"
+    font-weight: bold
+    font-size: 1.2rem
+
+
+.v 
+  * 
+    line-height 1.75rem !important
+  .vinput 
+    font-size .875rem !important
+  .vbtn 
+    border 1px solid #e9eff3 !important
+    background #333 !important
+    color #fff !important
+    &:hover 
+      color #45b358 !important
+      border-color #45b358 !important
+      background-color #fff !important
+      transition all 0.1s ease 0s !important;
+      -moz-transition all 0.1s ease 0s !important;
+      -webkit-transition all 0.1s ease 0s !important;
+      -o-transition all 0.1s ease 0s !important;
+    &:active 
+      //color #45b358 !important
+      //border-color #45b358 !important
+      color #348241 !important;
+      border-color #348241 !important;
+      background-color #fff !important
+      transition all 0.1s ease 0s !important;
+      -moz-transition all 0.1s ease 0s !important;
+      -webkit-transition all 0.1s ease 0s !important;
+      -o-transition all 0.1s ease 0s !important;
+      transform translateY(2px)!important;
+      
+
+  .vwrap 
+    padding 0px !important
+    border 1px solid #e7e7e7 !important
+    .vheader 
+      &.item2 
+        padding 10px 10px 0px 10px !important
+        .vinput 
+          &:focus 
+            border-bottom-color #fe1875 !important
+    .vedit 
+      padding-top 0px !important
+      textarea#veditor 
+        padding 15px 15px !important
+      /*
+      .vctrl 
+        background-color #f7f7f7 !important
+        span 
+          padding 0px 10px !important
+          line-height 1.5rem !important
+      */
+      .vemojis 
+        border-top 1px solid #f0f0f0 !important
+      .vinput 
+        &.vpreview 
+          padding 15px 15px !important
+          border-top 1px solid rgba(0,0,0,0.025) !important
+          min-height: 8.75rem;
+          p 
+            margin 0px !important
+    .vcontrol 
+      padding-top 0px !important
+      background-color rgba(0,0,0,0.025) !important
+      line-height 1.5rem !important
+      padding 0 10px 2px !important
+      .col 
+        line-height 1.5rem!important
+        button 
+          &.vsubmit 
+            &.vbtn 
+              line-height 1.5rem !important
+              padding 0rem 1.25rem !important
+              font-weight 500 !important
+              position: relative !important
+              bottom: -0.5px !important
+      .col.col-20
+        width 10% !important
+      .col.col-80    
+        width 90% !important
+        .vctrl 
+          background-color #f7f7f7 !important
+          display inherit !important
+          margin-right 10px !important
+
+          span 
+            margin 0px 5px !important;
+            //line-height 1.5rem !important;
+            font-size 12px !important;
+            display inline-block !important;
+
+          span.vemoji-btn,span.vpreview-btn
+            position: relative;
+            background-image: linear-gradient(transparent, transparent 6px, #383838 6px, #383838);
+            background-position: bottom;
+            background-size: 100% 8px;
+            background-repeat: repeat-x;
+            &:hover
+              color: #45b358 !important;
+              background-image: linear-gradient(transparent, transparent 5px, #f60c3e 5px, #f60c3e);
+              &:before
+                width: 100% !important;
+                left: 0 !important;
+                right: auto !important;
+            &:before 
+              content: "" !important;
+              position: absolute !important;
+              width: 0 !important;
+              right: 0 !important;
+              bottom: 0 !important;
+              height: 1px !important;
+              background: #1abc9c !important;
+              -webkit-transition: width 0.3s ease !important;
+              transition: width 0.3s ease !important;
+         
+              
+          
+
+  .vinfo 
+    padding 5px 0px  !important
+    .col 
+      &.vcount 
+        line-height 1.25rem !important
+        font-weight 600 !important
+        color #666 !important
+        position relative !important
+        margin 10px 0 !important
+        padding-left 8px !important
+        text-align left !important
+        &:before 
+          display block !important
+          position absolute !important
+          left 0 !important
+          top 0 !important
+          content "" !important
+          width 2.5px !important
+          height 100% !important
+          background-color #45b358 !important
+        .vnum 
+          line-height 1.25rem !important
+  .vlist 
+    .vcard
+      &:hover
+        box-shadow: 0 0.625em 1.75em 0 #eee
+      padding 1rem 0rem 0rem .5rem !important
+      margin .5rem 0 20px 0 !important
+      //background-color #fbfbfb !important
+      background-color #f7f6f7 !important
+      .vimg 
+        position absolute !important
+        width 2rem !important
+        height 2rem !important
+        border-radius 0!important
+      .vh 
+        margin-left .75rem !important
+        //border-bottom 1px dashed #eaeaea !important
+        .vhead 
+          margin-left 1.75rem !important
+          .vnick
+            top .15rem !important
+            color #333 !important
+            font-weight 700 !important
+          .vsys 
+            display inline !important
+        .vcontent 
+          margin-bottom .5rem !important
+          padding-right 1rem !important
+          * 
+            line-height 1.5 !important
+          p 
+            margin 5px 0  !important
+          pre
+            background-color rgba(0,0,0,0.013) !important
+            border none !important
+            border-radius 4px !important
+            -webkit-border-radius 4px !important
+            *
+              font-size 13.5px !important
+              line-height 22px !important
+        .vquote 
+          background-color rgba(0,0,0,.013)!important
+          margin-right 1rem !important
+          border-left 0 !important
+          padding-left 0 !important
+          .vcard 
+            padding-top .5rem !important
+            background-color rgba(0,0,0,.013) !important
+            margin .5rem 0px !important
+            border-left 2px solid rgba(0,0,0,0.05) !important
+        .vmeta 
+          .vat 
+            margin-right 15px !important
+            position relative !important
+            cursor pointer !important
+            text-decoration none !important
+            font-size .6875rem !important
+            color #999 !important
+            float none !important
+            &:hover 
+              color #d7191a !important
+
+          .vtime
+            color #999 !important
+            font-size .6875rem !important
+            //margin-right .875rem
+          span 
+            &.vat 
+              &:before 
+                content "" !important
+                position absolute !important
+                width 0 !important
+                right 0 !important
+                bottom 0 !important
+                height 1px !important
+                background #1abc9c !important
+                -webkit-transition width .3s ease !important
+                transition width .3s ease !important
+              &:hover 
+                &:before 
+                  width 100% !important
+                  left 0 !important
+                  right auto !important
+
+  .vpage 
+    .vmore 
+      padding .5rem 1.25rem !important
+      line-height 1.25rem !important

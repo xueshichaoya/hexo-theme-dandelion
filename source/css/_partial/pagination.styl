@@ -1,0 +1,37 @@
+.pagination
+  display: inline-block
+  margin-top: 2rem
+  margin-bottom: 4rem
+  width: 100%
+  text-align: center
+
+  .page-number
+    color: $color-text
+    //font-size: .8rem
+
+  a
+    padding: 4px 5px
+    //border-radius: 5px
+    // background-color: $color-accent-1
+    //background-image: none
+    color: $color-text
+    text-decoration: none
+
+  a:hover
+    background-image: none
+
+  a:hover:not(.active)
+    color: $color-accent-2
+
+  span>a
+    box-shadow: none
+
+#btn-pager
+  >*
+    padding: 4px 6px;
+    color: #595959;
+    margin: 0 7px;
+    text-decoration: none;
+
+  .current
+    box-shadow: 0 1px 0 #45b358;

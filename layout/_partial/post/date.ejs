@@ -1,0 +1,15 @@
+<% if (post.date) { %>
+    <span class="<%= class_name %>">
+        <% if (is_post()) { %>
+            <i class="icon czs-calendar-l"></i>
+            <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, "YYYY.MM.DD") %></time>
+        <% } else { %>
+            <% if (is_home()) { %>
+                <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, "YYYY-MM-DD") %></time>
+            <% } else { %>
+                <i class="icon czs-calendar-l"></i>
+                <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date, "YYYY-MM-DD") %></time>
+            <% } %>
+        <% } %>
+    </span>
+<% } %>

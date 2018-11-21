@@ -1,0 +1,12 @@
+<%- js('lib/share/js/qrcode.js') %>
+<%- js('lib/share/js/social-share.min.js') %>
+<%- js('lib/share/js/classie.js') %>
+<ul>
+<div class="social-share" data-initialized="true"  data-wechat-qrcode-helper="" >
+  <a href="#" class="icon czs-weixin social-share-icon icon-wechat " title="weixin"></a>
+  <a href="#" class="icon czs-qq social-share-icon icon-qq" title="QQ"></a>
+  <a href="#" class="icon czs-weibo social-share-icon icon-weibo" title="weibo"></a>
+  <a href="mailto:?subject=<%= page.title %>&body=Check out this article: <%= page.permalink %>" class="icon czs-message social-share-icon " aria-hidden="true" title="E-mail"></a>
+</div>
+<div class="md-overlay"></div>
+</ul>

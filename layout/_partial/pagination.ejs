@@ -1,0 +1,30 @@
+<% if (page.total > 1) { %>
+    <div class="pagination">
+        <% if (page.prev) { %>
+            <a href="<%- url_for(page.prev_link) %>"><i class="fas fa-angle-left"></i></a>
+        <% } %>
+        
+        <span class="page-number">Page<a href="<%- url_for('/page/'+page.current) %>"><%= page.current %></a>of<a href="<%- url_for('/page/'+page.total) %>"><%= page.total %></a></span>
+        <% if (page.next) { %>
+            <a href="<%- url_for(page.next_link) %>"><i class="fas fa-angle-right"></i>
+            </a>
+        <% } %>
+    </div>
+<% } %>
+
+
+
+
+<!-- 分页开始 
+<% if (page.total > 1){ %>
+<div id="btn-pager" class="pagination">
+    <% var prev_text = __('<i class="fas fa-angle-left"></i>');var next_text = __('<i class="fas fa-angle-right"></i>') %>
+    <%- paginator({
+        prev_text: prev_text,
+        next_text: next_text,
+        end_size:1,
+        mid_size:1
+    }) %>
+</div>
+<% } %>
+-->
