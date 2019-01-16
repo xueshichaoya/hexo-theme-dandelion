@@ -1,8 +1,17 @@
 
 <% if ( page.comments){ %>
 
-<div class="blog-post-comments">
+<% if (is_post()){ %>
+<div id="post-comments" class="blog-post-comments">
+    <h2 class="comments-title"><i class="czs-talk-l"></i>留下足迹</h2>
     <div id="valine-comments">     </div>
 </div>
 
+<% } else{ %>
+
+<div id="post-comments" class="blog-post-comments">
+    <h2 class="comments-title"><i class="czs-talk-l"></i>留言</h2>
+    <div id="valine-comments">     </div>
+</div>
+<% } %>
 <% } %>

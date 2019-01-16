@@ -1,0 +1,22 @@
+<!--Tags-->
+<% if (page.type==="tags") { %>
+<% if (site.tags.length) { %>
+<div class="block-explore-title">
+  <h2 class="block-explore-title-header"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h2>
+</div>
+<div class="widget tagcloud">
+  <ul>
+    <!-- %- list_tags(site.tags) % -->
+    <%- tagcloud(theme.tags_overview) %>
+  </ul>
+</div>
+<% } %>
+<% if (site.categories.length){ %>
+<div class="block-explore-title">
+  <h2 class="block-explore-title-header"><a href="#文章分类" class="headerlink" title="文章分类"></a>文章分类</h2>
+</div>
+<div class="widget categories-list-all">
+  <%- list_categories(site.categories) %>
+</div>
+<% } %>
+<% } %>

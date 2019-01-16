@@ -39,14 +39,22 @@
     <% var show_posts = site.posts.sort('date', 'desc').limit(theme.posts_overview.post_count || 5) %>
     <% } %>
     <% show_posts.each(function(post, i){ %>
-    <li class="post-item">
+    <li class="post-item aniview" data-av-animation="fadeInUp" style="opacity: 0;">
+      <% if (post.cover) { %>
+      <div class="post-item-cover">
+        <a class="img-link" href="<%- url_for(post.link) %>" target="_blank" itemprop="url">
+          <img class="post-item-img" src="<%= post.cover %>"></img>
+        </a>
+      </div>
+      <% } %>
+
       <div class="post-item-inner">
         <div class="item-title">
           <!--span><%- post.order %></span-->
           <%- partial('_partial/post/title', { post: post, index: true, class_name: '' }) %>
         </div>
         <div class="item-meta">
-          <%- partial('_partial/post/tag' , { post: post, class_name: 'posttag' }) %>
+          <%- partial('_partial/post/tag' , { post: post, class_name: 'article-tag' }) %>
           <%- partial('_partial/post/date', { post: post, class_name: 'postdate' }) %>
         </div>
 
@@ -60,26 +68,15 @@
           <% } %>
 
           <% if (post.excerpt) { %>
-          <%-post.excerpt %>
-          <!--a class="item-readmore" href="<%- url_for(post.path) %>" title="继续阅读「<%= post.title %>」"><span>继续阅读 &gt;</span></a-->
+            <%- post.excerpt %>
           <% } else { %>
-          <p>
-            <%- truncate(trim(strip_html(post.content)),{length: 160}) %>
-            <!--a class="item-readmore" href="<%- url_for(post.path) %>" title="继续阅读「<%= post.title %>」"><span>继续阅读 &gt;</span></a-->
-          </p>
+            <p><%- truncate(trim(strip_html(post.content)),{length: 160}) %></p>
           <% } %>
+          
+          <span class="service-item__text invue"><a href="<%- url_for(post.path) %>" aria-label="Digitale identiteter" class="arrow-link" data-v-262420ea=""><span class="arrow-link__arrow" data-v-262420ea=""><span class="arrow-link__arrow__icon arrow-link__arrow__icon--original" data-v-262420ea=""><svg width="46" height="9" xmlns="http://www.w3.org/2000/svg" data-v-262420ea=""><path d="M44.102 4l-2.444-2.445.009-1.405 4.325 4.325-4.38 4.38.01-1.423L44.101 5H.002V4z" fill-rule="evenodd"></path></svg></span><span class="arrow-link__arrow__icon arrow-link__arrow__icon--hover" data-v-262420ea=""><svg width="46" height="9" xmlns="http://www.w3.org/2000/svg" data-v-262420ea=""><path d="M44.102 4l-2.444-2.445.009-1.405 4.325 4.325-4.38 4.38.01-1.423L44.101 5H.002V4z" fill-rule="evenodd"></path></svg></span></span><span class="arrow-link__text" data-v-262420ea=""></span></a></span>
         </div>
+        
       </div>
-
-
-      <% if (post.cover) { %>
-      <div class="post-item-cover">
-        <a class="img-link" href="<%- url_for(post.link) %>" target="_blank" itemprop="url">
-          <img class="post-item-img" src="<%= post.cover %>"></img>
-        </a>
-      </div>
-      <% } %>
-
 
     </li>
     <% }); %>

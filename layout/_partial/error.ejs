@@ -1,0 +1,70 @@
+<!--Error-->
+    <% if (page.type==="error") { %>
+    <div id="error">
+      <h2 id="404提示"><a href="#404提示" class="headerlink" title="404提示"></a>404提示</h2>
+      <blockquote>
+        <figure class="highlight js">
+          <table>
+            <tbody>
+              <tr>
+                <td class="gutter">
+                  <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre>
+                </td>
+                <td class="code">
+                  <pre><span class="line">Hi，您好！</span><br><span class="line">    </span><br><span class="line">  服务器未找到您正欲浏览的相关内容，请先浏览其他内容，谢谢！</span><br><span class="line">  the server can not find the content you want, please view others, thanks!</span><br><span class="line">  +------------------------------+</span><br><span class="line">  |                              |</span><br><span class="line">  |   ~<span class="number number404">404</span> error ~               |</span><br><span class="line">  |   ~jump after <span id="show" class="number">15</span> seconds~   |</span><br><span class="line">  |                              |</span><br><span class="line">  +------------------------------+</span><br></pre>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      </blockquote>
+      <div id="error-recommend-read">
+        <% function getRandomArrayElements(arr, count) {
+        let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+        while (i-- > min) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+        }
+        return shuffled.slice(min);
+        } %>
+
+        <% var arr = [] %>
+        <% var maxCnt = 0 %>
+        <% site.posts.each(function(post, i){ %>
+        <% if (post.path != page.path) { %>
+        <% arr.push(post) %>
+        <% } %>
+        <% }); %>
+        <% var arrCnt = arr.length %>
+
+        <% (arrCnt>theme.recommend_read.post_count)?maxCnt = theme.recommend_read.post_count:maxCnt = arrCnt; %>
+        <% if (arrCnt>0) { %>
+        <h2><i class="czs-product-l"></i>推荐阅读</h2>
+        <ul id="recommend-read-ul">
+          <% getRandomArrayElements(arr,maxCnt).forEach(element => { %>
+          <li>
+            <a href="<%- url_for(element.path) %>" target="_blank" itemprop="url" title="<%= element.title %>">
+              <%- element.title %><a>
+          </li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </div>
+    </div>
+    <script>
+    var t = 15;
+    setInterval("refer()", 1000);
+
+    function refer() {
+        if (t === 0) {
+            location = "https://xschaoya.com";
+        }
+        document.getElementById('show').innerHTML = (Array(2).join(0)+t).slice(-2);;
+        t--;
+    }
+    </script>
+
+
+    <% } %>

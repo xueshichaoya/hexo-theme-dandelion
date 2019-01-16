@@ -13,6 +13,14 @@ if (!!$.prototype.justifiedGallery) {
 
 $(document).ready(function() {
 
+  if ($('.aniview').length>0){
+    var options = {
+      animateThreshold: 100,
+    };
+    $(".aniview").AniView(options);
+  }
+  
+
  //当前URL对当前栏目高亮突出显示
   /**
      $("#nav .site-nav  li a").each(function(){
@@ -97,9 +105,9 @@ $(document).ready(function() {
   if ($('#index-top-icon-tablet').length) {
     $(window).on("scroll", function() {
       var headerDistance = $(window).scrollTop();
-      if (headerDistance < 400 ) {
+      if (headerDistance < 300 ) {
         $("#index-top-icon-tablet").hide();
-      } else if (headerDistance > 400) {
+      } else if (headerDistance > 300) {
         $("#index-top-icon-tablet").show();
       }
     });
@@ -206,5 +214,17 @@ $(document).ready(function() {
       });
     }
   }
+
+  $('#lightgallery img:not(".not-gallery-item")').each(function () {
+    // wrap images with link and add caption if possible
+    if ($(this).parent('a').length === 0) {
+        $(this).wrap('<a class="gallery-item" href="' + $(this).attr('src') + '"></a>');
+        if (this.alt) {
+            $(this).after('<div class="has-text-centered is-size-6 has-text-grey caption img-describe">' + this.alt + '</div>');
+        }
+    }
+  });
+  $("#lightgallery").lightGallery({ selector: '.gallery-item'});
+
 
 });

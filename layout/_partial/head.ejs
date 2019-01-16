@@ -36,7 +36,21 @@
         <% } %>
     <% } %>
     <!-- title -->
-    <title><%= page.title ? page.title : config.title %></title>
+    <% var page_title = "" %>
+    <% if (is_home()) { %>
+      <% page_title = "首页" %>
+    <% } %>
+    <% if (is_archive()) { %>
+      <% page_title = "归档" %>
+    <% } %>
+    <% if (is_category()) { %>
+      <% page_title = page.category+" • 分类" %>
+    <% } %>
+    <% if (is_tag()) { %>
+      <% page_title = page.tag+" • 标签" %>
+    <% } %>
+    
+    <title><%= page.title ? page.title : page_title %> • <%= config.title %></title>
     <!-- styles -->
     <%- css('css/style') %>
     <!-- persian styles -->
@@ -50,6 +64,6 @@
     <% if (theme.rss) { %>
       <link rel="alternate" href="<%= url_for(theme.rss) %>" title="<%= config.title %>" type="application/atom+xml" />
     <% } %>
+    <link rel="manifest" href="/manifest.json">
 
-   
 </head>

@@ -1,3 +1,14 @@
+<% function getRandomArrayElements(arr, count) {
+    let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+    while (i-- > min) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(min);
+} %>
+
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle' }) %>
@@ -12,7 +23,7 @@
           <% } %></span>
       </span>
       <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
-      <%- partial('_partial/post/tag' , { post: page, class_name: 'posttag' }) %>
+      <%- partial('_partial/post/tag' , { post: page, class_name: 'article-tag' }) %>
       <span>
         <i class="icon czs-eye-l"></i>
         <span id="busuanzi_value_page_pv"></span><span>℃</span>
@@ -20,64 +31,60 @@
     </div>
   </header>
   <%- partial('_partial/post/gallery') %>
-  <div class="content" itemprop="articleBody">
+  <div id="lightgallery" class="content" itemprop="articleBody">
     <%- page.more %>
   </div>
-  <div>
-    <div class="post-announce">感谢您的阅读，本文由 <a href="<%= config.url %>">
-        <%= config.title %></a> 版权所有。如若转载，请注明出处：
-      <%= config.title %>（<a href="<%= config.url %>">
-        <%= config.url %></a>）
-    </div>
-    <div class="post-prev-next">
-      <% if (page.prev) { %>
-        <div class="post-prev">
-          <a title="<%- page.prev.title %>" href="<%- url_for(page.prev.path) %>">
-            <i class="fas fa-chevron-left"></i><%- page.prev.title %>
-          </a>
-        </div>
-      <% } %>
-      
-      <% if (page.next) { %>
-        <div class="post-next">
-          <a title="<%- page.next.title %>" href="<%- url_for(page.next.path) %>">
-            <%- page.next.title %><i class="fas fa-chevron-right"></i>
-          </a>
-        </div>
-      <% } %>
-    </div>
+
+  <div class="post-announce">感谢您的阅读，本文由 <a href="<%= config.url %>">
+      <%= config.title %></a> 版权所有。如若转载，请注明出处：
+    <%= config.title %>（<a href="<%= config.url %>">
+      <%= config.url %></a>）
   </div>
-  <div>
-    
 
+  <%- partial('_partial/post/tag' , { post: page, class_name: 'article-tag-end' }) %>
+</article>
 
+<div class="post-prev-next">
+  <% if (page.prev) { %>
+  <div class="post-prev">
+    <a title="<%- page.prev.title %>" href="<%- url_for(page.prev.path) %>">
+      <i class="fas fa-chevron-left"></i>
+      <span><%- page.prev.title %></span>
+    </a>
+  </div>
+  <% } %>
 
-<div id="archive">
-    <% var year = 0 %>
-    <% var itemFirst = true %>
-    <% var change = false %>
-    <% var cnt = 0 %>
-    <% var page_tags = list_tags(page.tags,{ show_count: false}) %>
-    <% var page_title = page.title %>
-    <ul>
-    <% site.posts.sort('date', 'desc').each(function(post) { %>
-      <% var post_tags = list_tags(post.tags,{ show_count: false}) %>
-      <% var post_title = post.title %>
-      <% if ((page_tags === post_tags)&&(post_title !==page_title)&&(cnt<5)) { %>
-        <li><%- post.title%></li>
-        <% cnt = cnt+1 %>
-      <% } %>
-      
-    <% }); %>
-    </ul>
+  <% if (page.next) { %>
+  <div class="post-next">
+    <a title="<%- page.next.title %>" href="<%- url_for(page.next.path) %>">
+      <span><%- page.next.title %></span>
+      <i class="fas fa-chevron-right"></i>
+    </a>
+  </div>
+  <% } %>
+</div>
+<div id="recommend-read">
+  <% var arr = [] %>
+  <% var maxCnt = 0 %>
+  <% site.posts.each(function(post, i){ %>
+    <% if (post.path != page.path) { %>
+      <% arr.push(post) %>
+    <% } %>
+  <% }); %>
+  <% var arrCnt = arr.length %>
+
+  <% (arrCnt>theme.recommend_read.post_count)?maxCnt = theme.recommend_read.post_count:maxCnt = arrCnt; %>
+  <% if (arrCnt>0) { %>
+  <h2><i class="czs-product-l"></i>推荐阅读</h2>
+  <ul id="recommend-read-ul">
+    <% getRandomArrayElements(arr,maxCnt).forEach(element => { %>
+    <li>
+      <a href="<%- url_for(element.path) %>" target="_blank" itemprop="url" title="<%= element.title %>"><%- element.title %><a>
+    </li>
+    <% }) %>
+  </ul>
+  <% } %>
 </div>
 
 
-
-
-
-  </div>
-</article>
-
 <%- partial('_partial/comments') %>
-

@@ -4,7 +4,7 @@
 @import "_mixins"
 @import "_extend"
 @import "_fonts"
-@import "_fonts1"
+//@import "_fonts1"
 
 global-reset()
 
@@ -48,6 +48,7 @@ body
   font-family: $font-family-body
   line-height: $line-height
   text-rendering: geometricPrecision
+  
   min-height: calc(100vh - 30px)
 
   ::-webkit-scrollbar 
@@ -89,18 +90,42 @@ a
 
   p
     hyphens(auto)
-    margin: 14px 0 28px 0
-    line-height: 2
+    margin: 0 0 2em 0
+    line-height: 1.8
     word-wrap: break-word;
     word-break: break-all;
+    text-align: left
+    &>a
+      color: $color-link
+    & + ul,& + ol,& + figure
+      margin: -2em 0 2em
 
   code
     hyphens(manual)
 
+  blockquote
+    * 
+      color: #389c49!important
+      line-height: 1.8
+    margin: 1rem 0.5rem;
+    background: inherit;
+    color: #389c49;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    font-weight: normal;
+    &:before
+      margin-right: 0.25em;
+      color: #389c49;
+      content: "\201C";
+      vertical-align: -0.4em;
+      font-size: 2em;
+      line-height: 0.1em;
+    p
+      margin: 0!important
+
   a
     color: $color-text
     text-decoration: none
-    underline(6px, $color-text)
+    //underline(6px, $color-text)
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent; 
     tap-highlight-color: rgba(0,0,0,0);
@@ -134,6 +159,9 @@ a
   h6
     a:hover
       underline(6px, $color-link)
+  
+  .widget
+    margin: 1em;
 
 @media (min-width: 540px)
   .image-wrap
@@ -149,7 +177,7 @@ a
 
 .max-width
   max-width: $page-width
-
+  
 @media (max-width: 480px)
   // smaller margins at smaller screen widths
   body ::-webkit-scrollbar
@@ -161,11 +189,8 @@ a
 
   .my4
     margin-top: 2rem
-    margin-bottom: 2rem
+    margin-bottom: 5rem
 
-@media (min-width: 480px)
-  p
-    text-align: justify
 
 @import "_partial/header"
 @import "_partial/post/actions_desktop"
@@ -179,6 +204,9 @@ a
 @import "_partial/search"
 // Code
 @import "_highlight/" + $highlight
+@import "_partial/_some"
+@import "_partial/_error"
+@import "_partial/_links"
 
 pre
   overflow-x: auto
@@ -209,7 +237,7 @@ code
 
 .highlight
   overflow-x: auto
-  margin: 1rem 0
+  margin: 0 0 1rem
   padding: 10px 15px 10px 10px
   border-radius: 4px
   background: $color-background-code
@@ -275,3 +303,10 @@ code
 
 .widget.tagcloud>ul
   padding-left: 1rem;
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 #about 
   //white-space pre-wrap
   //margin-bottom: 20px
-  font-family: $font-family-about
+  font-family: $font-family-index-about
   font-size: 1.02em
   overflow hidden
   show hidden
@@ -69,7 +69,7 @@
         background: none
         box-shadow: none
         transition: all .3s;
-        color: #161616
+        color: #000
         &:hover
           color: #000
           box-shadow: 0 2px 0 $color-accent-1
@@ -136,11 +136,17 @@
       a.tag-link:hover
         //font-size: 0.9rem !important;
         //color #000
-        transition: all 0.05s;
+        box-shadow: 0 1px 0 #45b358;
+        transition: all 0.3s;
+
     .item-excerpt
+      color #585858
       br
-          display none!important
-        
+        display none!important
+      
+      figure.highlight
+        br
+          display block!important
       a.item-readmore
         border: none;
         display: inline-flex;
@@ -161,6 +167,17 @@
 
       p
         margin:14px 0 0 0
+
+      h2
+        text-shadow: none
+        &:before
+          position: absolute;
+          top: -4px;
+          left: -1rem;
+          color: #45b358;
+          content: "#";
+          font-weight: bold;
+          font-size: 1.2rem;
       
 
 @media (min-width: 480px)
@@ -186,10 +203,10 @@
       display: inline
 
 #archive,article.post .content
-  font-family: $font-family-mono
+  //font-family: $font-family-mono
   
   a
-    color: $color-text
+    //color: $color-link
     text-decoration: none
     background: none
     position: relative;
@@ -245,10 +262,10 @@
       margin 0 0 24px 0
       padding 0 0 24px 0
       border-bottom: 1px dashed rgba(179, 197, 171, 0.25)
-      display flex
+      //display flex
 
       .post-item-inner
-        //width: 196px;
+        min-height: 180px;
         //margin-left: 24px;
 
       .post-item-cover
@@ -266,12 +283,15 @@
         width: 196px;
         min-width: 196px;
         max-width: 196px;
-        max-height: 150px
+        height: 150px
         margin-left: 24px;
+        margin-top: 1.5rem
         display block
         position: relative;
         overflow: hidden;
         border-radius: 4px;
+        float right 
+        
         a.img-link
           //opacity: 0;
           width: 100%;
@@ -280,6 +300,7 @@
           z-index: 2;
           font-size: 28px;
           transition: transform .3s,opacity .3s;
+          position  absolute;
         img
           width: 196px;
           height: 100%;

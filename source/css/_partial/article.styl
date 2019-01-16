@@ -1,4 +1,5 @@
 article
+  //text-shadow: 0px 0px 1px rgba(20, 20, 20, 0.1);
   line-height: 2
   header
       margin-top: 10px
@@ -7,17 +8,17 @@ article
       margin-top: 0
       margin-bottom: 0
       text-transform: none
-      font-size: 2rem
+      font-size: 1.75rem
       line-height: 1.25
-      font-family: $font-family-mono
+      font-family: $font-family-post-title
       font-weight: normal
       text-align: center
-      color #328a41
-      background: linear-gradient(to right,#152852 , #88d443 );
-      -webkit-text-fill-color: transparent;
+      color #333
+      //background: linear-gradient(to right,#333 , #333 );
+      //-webkit-text-fill-color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
-      text-shadow: 2px 3px 0 rgba(44, 115, 40, 0.04);
+      //text-shadow: 0px 0px 5px rgba(44, 115, 40, 0.1);
 
     .meta
       margin-top: .5em
@@ -62,14 +63,15 @@ article
             content "」"
 
     a
-      font-family: $font-family-mono
+      font-family: $font-family-body
 
     h1,h2,h3,h4,h5,h6
-      font-family: $font-family-mono
+      font-family: $font-family-body
+      text-shadow none
 
     h2:before
       position: absolute
-      top: -4px
+      top: -3px
       left: -1rem
       color: $color-accent-1
       content: "#"
@@ -82,7 +84,7 @@ article
       margin: auto
       max-width: 100%
       height: auto
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05)
+      box-shadow: 0 12px 8px rgba(0, 0, 0, 0.02)
       border-radius 4px
 
     /* http://webdesignerwall.com/tutorials/css-elastic-videos */
@@ -101,7 +103,7 @@ article
         height: 100%
 
     blockquote
-      margin: 1rem .5rem
+      margin: 1rem 0
       //padding: .5em 10px
       background: inherit
       color: $color-quote
@@ -152,11 +154,16 @@ article
 
     .caption
       position: relative
-      display: block
+      display: inline-block
       margin-top: .5em
       color: color-grey
       text-align: center
       font-size: .9em
+      box-shadow: none!important
+      text-shadow: none 
+      background: none 
+
+
 
   iframe
     max-width: 100%
@@ -169,24 +176,37 @@ article
 .post-announce 
     border-left: 2px solid #ccc;
     padding: 0px 10px;
+    margin-top: 1rem
 
 .post-prev-next 
   display: flex;
   width: 100%;
   font-size: 0;
   font-weight: 700;
-  margin-top: 2rem
+  margin-top: 4rem
   padding-top: 10px;
   border-top: 1px dashed #ddd;
 
   .post-prev
     flex: 1 0 0;
     overflow: hidden;
-    
+    padding-left: 20px
+    position relative
+    i
+      position: absolute;
+      left: 0;
+      top: .5em;
+
   .post-next
     flex: 1 0 0;
     overflow: hidden;
     text-align: right;
+    padding-right: 20px
+    position relative
+    i
+      position: absolute;
+      right: 0;
+      top: .5em;
   a
     font-size: 14px;
     display: inline-block;
@@ -204,7 +224,7 @@ article
       margin 0px 5px
 
 
-.article-tag
+.article-tag,.article-tag-end
   display inline
   .tag-link
     &:before
@@ -213,7 +233,59 @@ article
       font-weight: 700;
       margin: 0 .1em 0 0;
 
-    underline(10px, $color-link)
+    //underline(10px, $color-link)
+
+.article-tag-end
+  margin-top: 1rem
+  display block
+  i.icon
+    margin: 0 0px 0 -4px;
+
+#recommend-read-ul
+  margin-top: 0
+  padding-left: 2rem
+
+article
+  ul,ol
+    padding-left: 2rem
+    li
+      p
+        margin 0 0px 2em!important
+
+#recommend-read,#post-comments
+  h2
+    margin-left: 0px!important
+    i
+      margin: 0 4px 0 -4px
+
+#post-comments
+  h2:before
+    content:none
+
+.lg-outer .lg-thumb-item.active, .lg-outer .lg-thumb-item:hover
+  border 3px solid #45b358!important
+.lg-outer .lg-thumb-item
+  border none!important
+
+.lg-progress-bar
+  background-color: #ccc!important
+  height 3px!important
+.lg-progress-bar .lg-progress
+  background-color: #45b358!important
+  height 3px!important
+
+.gallery-item
+  display: block;
+  text-align: center;
+  box-shadow: none!important
+  margin:  1rem 0
+  .img-describe
+    text-align: center;
+    font-size: 0.8em;
+    font-style: italic
+    color: #aaaaaa
+    border-bottom:  1px solid rgba(0, 0, 0, 0.07)
+    padding .4rem 0 0 0
 
 @media (min-width: 480px)
   .article-tag

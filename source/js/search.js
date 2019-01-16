@@ -124,7 +124,10 @@ var searchFunc = function(path, searchId, contentId) {
               if(end > dataContent.length){
                 end = dataContent.length;
               }
-
+              
+              if(end > 200){
+                end = 200;
+              }
               var matchContent = dataContent.substr(start, end);
 
               // highlight all keywords

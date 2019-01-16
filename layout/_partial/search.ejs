@@ -13,9 +13,9 @@
   </form>
   <% if (is_home()) { %>
     <% if (theme.tags_overview && site.tags.length) { %>
-      <span class="widget tagcloud">
-        <%- tagcloud({min_font:10,max_font:16,amount:10,color:1,start_color:'#297866',end_color:'#183D4E'}) %>
-      </span>
+      <div class="widget tagcloud">
+        <%- tagcloud({min_font:10,max_font:16,amount:10}) %>
+      </div>
     <% } %>
   <% } %>
   <div id="search-result"></div>

@@ -8,7 +8,7 @@
   //border-top: 1px solid $color-border
   background: $color-footer-mobile-1
   transition: opacity .2s
-  box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.05)
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05)
 
   a
     background: none
@@ -48,21 +48,23 @@
 
   #actions-footer
     overflow: auto
-    padding: 5px 0
+    padding: 0
     width: 100%
     text-align: center
     white-space: nowrap
-    border-top: 1px solid $color-border
+    //border-top: 1px solid #999
+    box-shadow: 0 -5px 5px rgba(0,0,0,0.05)
 
     a
       display: inline-block
-      padding-left: .5rem
+      padding: 5px 0 5px .5rem
       color: $color-accent-1
       &:first-child
         padding-left: 0
 
   #share-footer
-    padding: 5px 1rem 
+    box-shadow: 0 -3px 5px rgba(0,0,0,0.05)
+    padding: 0px 1rem 
     background: $color-footer-mobile-2
     text-align: center
 
@@ -88,11 +90,12 @@
 
       a
         display: inline-table
-        padding: 0 10px
+        padding: 9px 10px
         width: 15%
         vertical-align: middle
 
   #toc-footer
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.05)
     clear: both
     padding-top: 1rem
     padding-bottom: 1rem
