@@ -13,7 +13,7 @@ global-reset()
 
 html
   height: 100%
-  border-top: 1px solid $color-text
+  //border-top: 1px solid $color-text
   -webkit-text-size-adjust: 100%
   -ms-text-size-adjust: 100%
  
@@ -188,7 +188,7 @@ a
     padding-left: 1rem
 
   .my4
-    margin-top: 2rem
+    margin-top: 4rem
     margin-bottom: 5rem
 
 
@@ -305,8 +305,55 @@ code
   padding-left: 1rem;
 
 
+#top-bg-bar
+  position fixed
+  top: 0
+  right 0
+  width: 100%
+  height .375rem
+  z-index 9999999
 
+#bottom-bg-bar
+  position fixed
+  bottom: 0
+  right 0
+  width: 100%
+  height .375rem
+  z-index 9999999
+  
+#left-bg-bar
+  position fixed
+  top: 0
+  left 0
+  width: .375rem
+  height 100vh
+  z-index 9999999
 
+#right-bg-bar
+  position fixed
+  top: 0
+  right 0
+  width: .375rem
+  height 100vh
+  z-index 9999999
 
+  
+#left-bg-bar1
+  position fixed
+  bottom: 0
+  left 0
+  width: .375rem
+  height 100vh
+  z-index 9999999
 
+#right-bg-bar1
+  position fixed
+  bottom: 0
+  right 0
+  width: .375rem
+  height 100vh
+  z-index 9999999
 
+article.post
+  padding-left: .375rem
+  padding-right: .375rem

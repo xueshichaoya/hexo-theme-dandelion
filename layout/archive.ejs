@@ -1,3 +1,22 @@
+<% function getRandomArrayElements(arr, count) {
+    let shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+    while (i-- > min) {
+        index = Math.floor((i + 1) * Math.random());
+        temp = shuffled[index];
+        shuffled[index] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(min);
+} %>
+<% var arrColor = ['#ffff00','#13f3b6'] %>
+<% var bgcolor=getRandomArrayElements(arrColor,1) %>
+<div id="top-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="bottom-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="left-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="right-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="left-bg-bar1" style="background-color: <%=bgcolor %>"></div>
+<div id="right-bg-bar1" style="background-color: <%=bgcolor %>"></div>
+
 <div id="archive">
     <% var year = 0 %>
     <% var itemFirst = true %>

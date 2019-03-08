@@ -15,9 +15,9 @@
     <% if (theme.favicon) { %>
         <% if (theme.favicon.desktop) { %>
           <% if (theme.gravatar.email && theme.favicon.desktop.gravatar) { %>
-              <link rel="shortcut icon" href="<%= gravatar(theme.gravatar.email, 16) %>">
+              <link id="shortcut-icon"  data-custom="true" rel="shortcut icon" type="image/x-icon" href="<%= gravatar(theme.gravatar.email, 16) %>">
           <% } else { %>
-              <link rel="shortcut icon" href="<%= url_for(theme.favicon.desktop.url) %>">
+              <link id="shortcut-icon"  data-custom="true" rel="shortcut icon" type="image/x-icon" href="<%= url_for(theme.favicon.desktop.url) %>">
           <% } %>
         <% } %>
         <% if (theme.favicon.android) { %>

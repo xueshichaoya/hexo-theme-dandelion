@@ -16,10 +16,15 @@
     text-decoration: none
 
   a.icon
-    background: none
-
+    //background: none
+      
     &:hover
-      color: $color-link
+      .nav
+        color: $color-dark1
+        background: transparent url(/images/wave_dark.svg) repeat-x
+        background-position: 0 100%
+        background-size: 7px 4px
+        //padding: 0 0 0.4em 0
 
   #nav-footer
     padding: 5px 1rem
@@ -27,8 +32,12 @@
     text-align: center
 
     a
-      color: $color-accent-1
+      //color: $color-accent-1
       font-size: 1em
+      background: transparent url(/images/wave.svg) repeat-x
+      background-position: 0 100%
+      background-size: 7px 4px
+      padding: 0 0 0.4em 0
 
     a:hover
       underline(5px, $color-accent-1)
@@ -58,7 +67,7 @@
     a
       display: inline-block
       padding: 5px 0 5px .5rem
-      color: $color-accent-1
+      //color: $color-accent-1
       &:first-child
         padding-left: 0
 

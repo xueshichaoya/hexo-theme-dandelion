@@ -293,3 +293,41 @@ article
 
     &:before
       content: "|"
+
+
+.cover-header
+  //background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+  height: 220px;
+  margin-left: -16px;
+  margin-right: -16px;
+  margin-top: -72px;
+  position: relative;
+  
+
+  .post-header
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+  
+  *
+    text-align: center
+
+  .white
+    *
+      color: #fff!important
+
+  .dark
+    *
+      color: #000!important
+
+@media (min-width: 500px)
+  .cover-header
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    height: 350px;

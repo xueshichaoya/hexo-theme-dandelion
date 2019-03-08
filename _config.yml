@@ -76,13 +76,13 @@ logo:
 #   - gravatar: whether to create a favicon from your Gravatar
 favicon:
   desktop:
-    url: /images/icons/danlion/title.png
+    url: /images/favicon-trans-green1-48x48.png
     gravatar: false
   android:
-    url: /images/icons/danlion/title.png
+    url: /images/favicon-trans-green1-48x48.png
     gravatar: false
   apple:
-    url: /images/icons/danlion/title.png
+    url: /images/favicon-trans-green1-180x180.png
     gravatar: false
 
 # The color scheme that should be used to highlight codeblocks.

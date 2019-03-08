@@ -8,11 +8,21 @@
     }
     return shuffled.slice(min);
 } %>
+<% var arrColor = ['#00ffe5','#f22e6a','#fcfc4c','#fc3c6c','#f8bd1f','#00ffff','#2edba5','#13f3b6'] %>
+<% var bgcolor=getRandomArrayElements(arrColor,1) %>
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-header">
-    <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle' }) %>
-    <div class="meta">
+<div id="top-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="bottom-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="left-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="right-bg-bar" style="background-color: <%=bgcolor %>"></div>
+<div id="left-bg-bar1" style="background-color: <%=bgcolor %>"></div>
+<div id="right-bg-bar1" style="background-color: <%=bgcolor %>"></div>
+
+<% if (page.cover_header) { %>
+<div class="cover-header" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('<%= page.cover_header %>')">
+    <header class="post-header">
+    <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle white' }) %>
+    <div class="meta white">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
         <i class="icon czs-user-l"></i>
         <span itemprop="name">
@@ -23,13 +33,41 @@
           <% } %></span>
       </span>
       <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
-      <%- partial('_partial/post/tag' , { post: page, class_name: 'article-tag' }) %>
+      <%- partial('_partial/post/tag' , { post: page, class_name: 'article-tag white' }) %>
       <span>
         <i class="icon czs-eye-l"></i>
         <span id="busuanzi_value_page_pv"></span><span>℃</span>
       </span>
     </div>
   </header>
+</div>
+<% } else { %>
+<div class="cover-header" style="background-color: <%=bgcolor %>">
+    <header class="post-header">
+    <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle dark' }) %>
+    <div class="meta dark">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <i class="icon czs-user-l"></i>
+        <span itemprop="name">
+          <% if (page.author) { %>
+          <%- page.author %>
+          <% } else { %>
+          <%- config.author %>
+          <% } %></span>
+      </span>
+      <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
+      <%- partial('_partial/post/tag' , { post: page, class_name: 'article-tag dark' }) %>
+      <span>
+        <i class="icon czs-eye-l"></i>
+        <span id="busuanzi_value_page_pv"></span><span>℃</span>
+      </span>
+    </div>
+  </header>
+</div>
+<% } %>
+
+<article class="post" style="border-color: <%=bgcolor %>;border-color: <%=bgcolor %>;" itemscope itemtype="http://schema.org/BlogPosting">
+  
   <%- partial('_partial/post/gallery') %>
   <div id="lightgallery" class="content" itemprop="articleBody">
     <%- page.more %>
@@ -86,5 +124,35 @@
   <% } %>
 </div>
 
+<% if (is_post()) { %>
+    <div id="footer-post-container">
+  <div id="footer-post" style="background-color: <%=bgcolor %>">
 
+    <div id="nav-footer" style="display: none">
+      <ul>
+        <% for (var i in theme.nav) { %> 
+          <li><a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a></li>
+        <% } %>
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none;">
+      <%- toc(page.content) %>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <%- partial('_partial/post/share', { icon_class_name: 'fa-lg' }) %>
+    </div>
+
+    <div id="actions-footer" style="background-color: <%=bgcolor %>">
+        <a id="menu"  class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><div class="nav"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> <%= __('post.mobile.menu') %></div></a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><div class="nav"><i class="fas fa-list fa-lg" aria-hidden="true"></i> <%= __('post.mobile.toc') %></div></a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><div class="nav"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> <%= __('post.mobile.share') %></div></a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><div class="nav"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> <%= __('post.mobile.back_to_top') %></div></a>
+    </div>
+
+  </div>
+</div>
+
+<% } %>
 <%- partial('_partial/comments') %>

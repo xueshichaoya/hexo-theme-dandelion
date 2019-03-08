@@ -80,15 +80,18 @@
       
       a
         margin-right: 1.125rem
-        color: color-accent-1
+        color: $color-accent-1
 
       a:hover
         underline(5px, $color-accent-1)
         box-shadow: none
 
+      a.selected
+        background: none
+
       a
         text-decoration: none
-        background: none
+        //background: none
         position: relative;
         box-shadow: none
         &:hover
@@ -111,6 +114,17 @@
           transition-timing-function: ease-in-out;
           transition-delay: 0
         //underline(6px, $color-text)
+        &:after
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          bottom: -3.5px
+          left: 0;
+          background: transparent url(/images/wave.svg) repeat-x
+          background-position: 0 100%
+          background-size: 8px 4px
+          padding: 0 0 0.4em 0
         &:hover:before
           //background-image: linear-gradient(transparent, transparent 5px, $color-link 5px, $color-link)
           visibility: visible;
@@ -121,6 +135,8 @@
           transform: scaleX(1.02);
           height: 2px;
           background-color: $color-accent-1
+        &:hover:after
+          visibility hidden
 
         &.selected:before
           //background-image: linear-gradient(transparent, transparent 5px, $color-link 5px, $color-link)
@@ -133,7 +149,8 @@
           height: 2px;
           background-color: $color-accent-1
           transition-duration: 0.1s;
-          
+        &.selected:after
+          visibility hidden
 
       
 
